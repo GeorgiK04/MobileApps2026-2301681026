@@ -21,23 +21,24 @@ class DetailViewModel(private val repository: MovieRepository) : ViewModel() {
     private val _isFavorite = MutableLiveData<Boolean>()
     val isFavorite: LiveData<Boolean> = _isFavorite
 
-    fun loadMovie(movieId: Int) {
+    fun loadMovie(movieId: Int, userId: Int) {
         _uiState.value = DetailUiState.Loading
         viewModelScope.launch {
             try {
                 val movie = repository.getMovieDetails(movieId, BuildConfig.TMDB_API_KEY)
                 _uiState.value = DetailUiState.Success(movie)
-                _isFavorite.value = repository.isFavorite(movieId)
+                _isFavorite.value = repository.isFavorite(movieId, userId)
             } catch (e: Exception) {
-                _uiState.value = DetailUiState.Error(e.message ?: "Неизвестна грешка")
+                _uiState.value = DetailUiState.Error(e.message ?: "Грешка")
             }
         }
     }
 
-    fun toggleFavorite(movie: MovieDto) {
+    fun toggleFavorite(movie: MovieDto, userId: Int) {
         viewModelScope.launch {
             val entity = MovieEntity(
                 id = movie.id,
+                userId = userId,
                 title = movie.title,
                 overview = movie.overview,
                 posterPath = movie.posterPath,

@@ -22,6 +22,8 @@ class DetailFragment : Fragment() {
         DetailViewModelFactory((requireActivity().application as MovieApp).repository)
     }
 
+    private var currentUserId: Int = -1
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -33,7 +35,12 @@ class DetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.loadMovie(args.movieId)
+
+        val app = requireActivity().application as MovieApp
+        currentUserId = app.sessionManager.getUserId()
+
+        viewModel.loadMovie(args.movieId, currentUserId)
+
         observeViewModel()
     }
 
@@ -42,9 +49,15 @@ class DetailFragment : Fragment() {
             when (state) {
                 is DetailUiState.Loading -> {
                     binding.tvTitle.text = "Зареждане..."
+                    binding.tvOverview.text = ""
+                    binding.tvReleaseDate.text = ""
+                    binding.fabFavorite.visibility = View.GONE
                 }
+
                 is DetailUiState.Success -> {
                     val movie = state.movie
+
+                    binding.fabFavorite.visibility = View.VISIBLE
                     binding.tvTitle.text = movie.title
                     binding.tvOverview.text = movie.overview
                     binding.tvReleaseDate.text = "📅 ${movie.releaseDate ?: "Няма дата"}"
@@ -52,18 +65,23 @@ class DetailFragment : Fragment() {
 
                     Glide.with(this)
                         .load("https://image.tmdb.org/t/p/w500${movie.posterPath}")
+                        .placeholder(com.example.moviebrowser.R.drawable.ic_movie_placeholder)
                         .into(binding.ivPoster)
 
                     Glide.with(this)
                         .load("https://image.tmdb.org/t/p/w780${movie.posterPath}")
+                        .placeholder(com.example.moviebrowser.R.drawable.ic_movie_placeholder)
                         .into(binding.ivBackdrop)
 
                     binding.fabFavorite.setOnClickListener {
-                        viewModel.toggleFavorite(movie)
+                        viewModel.toggleFavorite(movie, currentUserId)
                     }
                 }
+
                 is DetailUiState.Error -> {
-                    binding.tvTitle.text = "Грешка: ${state.message}"
+                    binding.tvTitle.text = "Грешка"
+                    binding.tvOverview.text = state.message
+                    binding.fabFavorite.visibility = View.GONE
                 }
             }
         }

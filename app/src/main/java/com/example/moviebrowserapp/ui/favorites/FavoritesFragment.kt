@@ -18,7 +18,8 @@ class FavoritesFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val viewModel: FavoritesViewModel by viewModels {
-        FavoritesViewModelFactory((requireActivity().application as MovieApp).repository)
+        val userId = (requireActivity().application as MovieApp).sessionManager.getUserId()
+        FavoritesViewModelFactory((requireActivity().application as MovieApp).repository, userId)
     }
 
     private lateinit var adapter: FavoritesAdapter

@@ -3,10 +3,10 @@ package com.example.moviebrowser.data.local
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName = "favorites")
+@Entity(tableName = "favorites", primaryKeys = ["id", "userId"])
 data class MovieEntity(
-    @PrimaryKey
     val id: Int,
+    val userId: Int,
     val title: String,
     val overview: String,
     val posterPath: String?,
