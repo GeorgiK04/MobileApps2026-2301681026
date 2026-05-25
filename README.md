@@ -216,7 +216,7 @@ defaultConfig {
 
 | Популярни филми | Детайли | Любими |
 |---|---|---|
-| ![Home](https://github.com/GeorgiK04/MobileApps2026-2301681026/blob/master/docs/home.png) | ![Detail](https://github.com/GeorgiK04/MobileApps2026-2301681026/blob/master/docs/detail.png) | ![Favorites](https://github.com/GeorgiK04/MobileApps2026-2301681026/blob/master/docs/favorite.png) |
+| ![Home](https://github.com/GeorgiK04/MobileApps2026-2301681026/blob/master/docs/home.png) | ![Detail](https://github.com/GeorgiK04/MobileApps2026-2301681026/blob/master/docs/details.png) | ![Favorites](https://github.com/GeorgiK04/MobileApps2026-2301681026/blob/master/docs/detail.png) |
 
 > Скрийншотовете се намират в [`/docs/images/`](docs/images/)
 
