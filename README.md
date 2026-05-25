@@ -152,8 +152,8 @@ class MovieRepository(
 **1. Клонирай репото:**
 
 ```bash
-git clone https://github.com/<ФН>/MobileApps2025-<ФН>.git
-cd MobileApps2025-<ФН>
+git clone https://github.com/2301681026/MobileApps2026-2301681026.git
+cd MobileApps2026-2301681026
 ```
 
 **2. Добави API ключ** в `app/build.gradle.kts`:
@@ -212,11 +212,11 @@ defaultConfig {
 
 | Splash Screen | Логин | Регистрация |
 |---|---|---|
-| ![Splash](docs/images/splash.png) | ![Login](docs/images/login.png) | ![Register](docs/images/register.png) |
+| ![Splash](https://github.com/GeorgiK04/MobileApps2026-2301681026/blob/master/docs/splash.png) | ![Login](https://github.com/GeorgiK04/MobileApps2026-2301681026/blob/master/docs/login.png) | ![Register](https://github.com/GeorgiK04/MobileApps2026-2301681026/blob/master/docs/register.png) |
 
 | Популярни филми | Детайли | Любими |
 |---|---|---|
-| ![Home](docs/images/home.png) | ![Detail](docs/images/detail.png) | ![Favorites](docs/images/favorites.png) |
+| ![Home](https://github.com/GeorgiK04/MobileApps2026-2301681026/blob/master/docs/home.png) | ![Detail](https://github.com/GeorgiK04/MobileApps2026-2301681026/blob/master/docs/details.png) | ![Favorites](https://github.com/GeorgiK04/MobileApps2026-2301681026/blob/master/docs/detail.png) |
 
 > Скрийншотовете се намират в [`/docs/images/`](docs/images/)
 
