@@ -153,7 +153,7 @@ class MovieRepository(
 
 ```bash
 git clone https://github.com/2301681026/MobileApps2026-2301681026.git
-cd MobileApps2025-<ФН>
+cd MobileApps2026-2301681026
 ```
 
 **2. Добави API ключ** в `app/build.gradle.kts`:
